@@ -1,7 +1,7 @@
  services:
    postgres:
      container_name: postgres-sql-bsn
-     image: postgres
+     image: postgres:16-alpine3.20
      environment:
        POSTGRES_USER: postgres
        POSTGRES_PASSWORD: postgres
@@ -10,10 +10,11 @@
      volumes:
        - postgres:/data/postgres
      ports:
-       - 5432:5432
+       - 5433:5432
      networks:
        - spring-demo
      restart: unless-stopped
+
    mail-dev:
      container_name: mail-dev-bsn
      image: maildev/maildev
