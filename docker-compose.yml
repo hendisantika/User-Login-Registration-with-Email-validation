@@ -1,16 +1,16 @@
  services:
    postgres:
      container_name: postgres-sql-bsn
-     image: postgres:16-alpine3.20
+     image: postgres:17.5-alpine3.22
      environment:
        POSTGRES_USER: postgres
        POSTGRES_PASSWORD: postgres
        PGDATA: /var/lib/postgres/data
        POSTGRES_DB: book_social_network
      volumes:
-       - postgres:/data/postgres
+       - ./postgres:/data/postgres
      ports:
-       - 5433:5432
+       - "5433:5432"
      networks:
        - spring-demo
      restart: unless-stopped
@@ -19,8 +19,8 @@
      container_name: mail-dev-bsn
      image: maildev/maildev
      ports:
-       - 1080:1080
-       - 1025:1025
+       - "1080:1080"
+       - "1025:1025"
  networks:
    spring-demo:
      driver: bridge
